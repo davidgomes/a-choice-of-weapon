@@ -24,7 +24,9 @@ function PlayState() {
       penta.switchState(new OverState('you ran out of bullets', this.player.score));
     }
 
-    if (document.getElementById('music').currentTime >= 295) {
+    console.log(document.getElementById('music').currentTime);
+    
+    if (document.getElementById('music').currentTime >= 177) {
       penta.switchState(new OverState('the song is over :\'(', this.player.score));      
     }
 
