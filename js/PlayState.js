@@ -15,6 +15,7 @@ function PlayState() {
       var newEnemy = new penta.Sprite('assets/enemy.png', -5, this.floorLevel - this.enemySize.height);
       newEnemy.vx = getRandomInt(2, 4);
       newEnemy.vy = getRandomInt(-8, 0);
+      newEnemy.health = 5000;
 
       if (Math.random() < 0.1) {
         newEnemy.vy = 0;
@@ -48,7 +49,7 @@ function PlayState() {
 
     if (penta.isMouseDown('left')) {
       if (this.player.canShoot) {
-        var shootAudio = document.getElementById("shoot1").cloneNode();
+        var shootAudio = document.getElementById('shoot1').cloneNode();
         shootAudio.play();
 
         this.enemies.sprites.forEach((function (enemy, index) {
@@ -68,7 +69,21 @@ function PlayState() {
     }
 
     if (penta.isMouseDown('right')) {
-      
+      var shootAudio = document.getElementById('shoot2').cloneNode();
+      shootAudio.play();
+
+      this.enemies.sprites.forEach((function (enemy, index) {
+        if (isPointInsideRectangle(penta.mouse.x, penta.mouse.y,
+                                   enemy.x, enemy.y,
+                                   this.enemySize.width,
+                                   this.enemySize.height)) {
+          enemy.health -= 200;
+
+          if (enemy.health <= 0) {
+            this.enemies.remove(enemy);
+          }
+        }
+      }).bind(this));
     }
   };
 
