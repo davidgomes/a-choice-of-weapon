@@ -16,6 +16,8 @@ function PlayState() {
   };
 
   this.update = function () {
+    
+    
     // var highness = song[Math.floor(document.getElementById('music').currentTime)] / songAvg;
 
     if (this.player.bullets <= 0) {
@@ -33,7 +35,7 @@ function PlayState() {
     }
 
     if (Math.random() < difficulty || this.enemies.sprites.length == 0) {
-      var newEnemy = new penta.Sprite('assets/enemy.png', -5, this.floorLevel - this.enemySize.height);
+      var newEnemy = new penta.Sprite('assets/enemy.png', -5, getRandomInt(this.floorLevel - this.enemySize.height, this.floorLevel - this.enemySize.height - 300));
       newEnemy.vx = getRandomInt(2, 4);
       newEnemy.vy = getRandomInt(-8, 0);
       newEnemy.health = 5000;
@@ -46,7 +48,6 @@ function PlayState() {
 
       newEnemy.floorLevel = this.floorLevel;
       this.enemies.push(newEnemy);
-      // this.player.bullets++;
     }
 
     this.enemies.sprites.forEach((function (enemy, index) {
@@ -106,7 +107,7 @@ function PlayState() {
                                    enemy.x, enemy.y,
                                    this.enemySize.width,
                                    this.enemySize.height)) {
-          enemy.health -= 1000;
+          enemy.health -= 1750;
 
           if (enemy.health <= 0) {
             enemy.x = 801;
@@ -119,6 +120,7 @@ function PlayState() {
     if (!penta.isMouseDown('left') && !penta.isMouseDown('right')) {
       this.canAccept = true;
     }
+
   };
 
   this.draw = function () {

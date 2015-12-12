@@ -22,7 +22,7 @@ function TitleState() {
     penta.currentFont = '50px ProggySquareTT';
 
     if (this.messageShow) {
-      penta.drawString('press both mouse buttons to play', 385, 400, '#FFF', 'center');
+      penta.drawString('press both mouse buttons to play', 395, 400, '#FFF', 'center');
     }
   };
 }
