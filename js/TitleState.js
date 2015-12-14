@@ -8,7 +8,7 @@ function TitleState() {
   };
 
   this.update = function () {
-    if (penta.isMouseDown('left') && penta.isMouseDown('right')) {
+    if (penta.isMouseDown('left') || penta.isMouseDown('right')) {
       penta.switchState(new ExplainState());
     }
   };
@@ -22,7 +22,7 @@ function TitleState() {
     penta.currentFont = '50px ProggySquareTT';
 
     if (this.messageShow) {
-      penta.drawString('press both mouse buttons to play', 395, 400, '#FFF', 'center');
+      penta.drawString('press a mouse button to play', 395, 400, '#FFF', 'center');
     }
   };
 }

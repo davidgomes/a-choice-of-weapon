@@ -9,7 +9,7 @@ function OverState(reason, score) {
       this.canAccept = true;
     }
 
-    if (penta.isMouseDown('left') && penta.isMouseDown('right') && this.canAccept) {
+    if ((penta.isMouseDown('left') || penta.isMouseDown('right')) && this.canAccept) {
       penta.switchState(new PlayState());
     }
   };
@@ -24,6 +24,6 @@ function OverState(reason, score) {
 
     penta.currentFont = '40px ProggySquareTT';
 
-    penta.drawString('press both mouse buttons to start again', 380, 300, '#FFF', 'center');
+    penta.drawString('press a mouse button to start again', 380, 300, '#FFF', 'center');
   };
 }

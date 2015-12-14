@@ -12,7 +12,7 @@ function ExplainState() {
   };
 
   this.update = function () {
-    if (penta.isMouseDown('left') && penta.isMouseDown('right') && this.canAccept) {
+    if ((penta.isMouseDown('left') || penta.isMouseDown('right')) && this.canAccept) {
       penta.switchState(new PlayState());
     }
 
@@ -37,7 +37,7 @@ function ExplainState() {
     penta.currentFont = '45px ProggySquareTT';
 
     if (this.messageShow) {
-      penta.drawString('press both mouse buttons to continue', 390, 560, '#FFF', 'center');
+      penta.drawString('press a mouse button to continue', 390, 560, '#FFF', 'center');
     }
   };
 }
